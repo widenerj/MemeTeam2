@@ -13,6 +13,7 @@ public class Board extends JPanel
     private Image lab;
     private Image drawPile;
     private Image discardPile;
+    private Image endTurn;
     private GooGame game = new GooGame();
     private ArrayList<Card> hand;
 
@@ -40,6 +41,8 @@ public class Board extends JPanel
         drawPile = iv.getImage();
         ImageIcon v = new ImageIcon("src/gameImages/discardPile.png");
         discardPile = v.getImage();
+        ImageIcon vi = new ImageIcon("src/gameImages/endme.png");
+        endTurn = vi.getImage();
     }
 
     @Override
@@ -58,6 +61,7 @@ public class Board extends JPanel
         g.drawImage(scientist,550,250,null);
         g.drawImage(drawPile,50,450,null);
         g.drawImage(discardPile,900,450,null);
+        g.drawImage(endTurn,870,550,null);
 
         //All of this does the green box
         Graphics2D g2d = (Graphics2D) g;
@@ -74,6 +78,8 @@ public class Board extends JPanel
             g2d.fill(littleCardBox);
             g2d.draw(littleCardBox);
         }
+
+        //End turn
     }
 
     public void drawNumbers(Graphics g)
@@ -85,8 +91,8 @@ public class Board extends JPanel
         g2d.drawString("Goo Health: " + game.getPlayer().GetHealth() + "/" + game.getPlayer().GetHealthMax() ,250,250);
         g2d.drawString("Scientist Health: " + game.getMonster().GetHealth() + "/" + game.getMonster().GetHealthMax(),600,250);
 
-        g2d.drawString("10",92,505);
-        g2d.drawString("10",942,505);
+        g2d.drawString(Integer.toString(game.getCombat().getDeckDraw().size()),92,505);
+        g2d.drawString(Integer.toString(game.getCombat().getDiscard().size()),942,505);
     }
 
     public void drawCards(Graphics g)

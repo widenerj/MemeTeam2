@@ -21,6 +21,11 @@ public class Combat
     {
         return discard;
     }
+    public ArrayList<Card> getDeckDraw()
+    {
+        return deck;
+    }
+
 
     public Combat(Player _player, Monster _monster, ArrayList<Card> _deck)
     {
