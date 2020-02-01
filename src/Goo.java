@@ -18,7 +18,7 @@ public class Goo extends JFrame
         board = new Board();
         add(board);
         setResizable(false);
-        setSize(1024,690);
+        setSize(1024,768);
         setTitle("Goo");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
