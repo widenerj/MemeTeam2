@@ -7,6 +7,8 @@ import java.util.Random;
 
 public class Goo extends JFrame
 {
+    private static int drawCount = 0;
+
     private static JPanel board;
 
     public Goo()
@@ -73,7 +75,6 @@ public class Goo extends JFrame
             {
                 System.out.println("You ended your turn!");
 
-                int drawCount = 3;
                 boolean turnActive;
                 int draw;
 
