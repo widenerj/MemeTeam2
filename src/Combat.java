@@ -9,7 +9,7 @@ public class Combat
     private Monster monster;
     ArrayList<Card> deck;
     private boolean turnActive = false;
-    private int drawCount = 3;
+    private int drawCount = 0;
     private ArrayList<Card> hand;
     private ArrayList<Card> discard;
 
@@ -34,9 +34,9 @@ public class Combat
         deck = _deck;
     }
 
-    public boolean GetDrawCount()
+    public int GetDrawCount()
     {
-        return turnActive;
+        return drawCount;
     }
 
     public void SetDrawCount(int _drawCount)

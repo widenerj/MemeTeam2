@@ -9,6 +9,7 @@ public class Card {
     private int heal;
     private int state; // 0 = DECK, 1 = HAND, 2 = DISCARD
     private Color color;
+    private int drawCount = 0;
 
 
     public Card() {
@@ -20,6 +21,18 @@ public class Card {
     public String GetName()
     {
         return name;
+    }
+
+    public int getDrawCount() {
+        return drawCount;
+    }
+
+    public void setDrawCount(int _drawCount) {
+        drawCount = _drawCount;
+    }
+
+    public int getCardType() {
+        return cardType;
     }
 
     public Card (int _cardType) {
@@ -53,7 +66,7 @@ public class Card {
             case 1:     // Spell demo
                 _player.AdditiveChangeHealth(-10);
                 _monster.AdditiveChangeHealth(-20);
-                _fight.SetDrawCount(1);
+                drawCount += 1;
                 System.out.println("EFFECT 1");
                 break;
             case 2:     // Heal demo
@@ -62,6 +75,8 @@ public class Card {
                 break;
             case 3:     // Weaken demo
                 _monster.SetPower(_monster.GetPower() / 2);
+                _player.AdditiveChangeHealth(-4);
+                drawCount += 1;
                 System.out.println("EFFECT 3");
                 break;
             default:
