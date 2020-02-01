@@ -30,15 +30,15 @@ public class Board extends JPanel
     private void loadImage()
     {
         //Loads all the images
-        ImageIcon i = new ImageIcon("C:/Users/dalto/Desktop/gameImages/goo.png");
+        ImageIcon i = new ImageIcon("src/gameImages/goo.png");
         goo = i.getImage();
-        ImageIcon ii = new ImageIcon("C:/Users/dalto/Desktop/gameImages/scientist.png");
+        ImageIcon ii = new ImageIcon("src/gameImages/scientist.png");
         scientist = ii.getImage();
-        ImageIcon iii = new ImageIcon("C:/Users/dalto/Desktop/gameImages/lab.png");
+        ImageIcon iii = new ImageIcon("src/gameImages/lab.png");
         lab = iii.getImage();
-        ImageIcon iv = new ImageIcon("C:/Users/dalto/Desktop/gameImages/drawPile.png");
+        ImageIcon iv = new ImageIcon("src/gameImages/drawPile.png");
         drawPile = iv.getImage();
-        ImageIcon v = new ImageIcon("C:/Users/dalto/Desktop/gameImages/discardPile.png");
+        ImageIcon v = new ImageIcon("src/gameImages/discardPile.png");
         discardPile = v.getImage();
     }
 
