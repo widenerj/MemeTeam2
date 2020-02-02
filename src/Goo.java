@@ -47,25 +47,25 @@ public class Goo extends JFrame
         @Override
         public void mousePressed(MouseEvent e)
         {
-            if (monsterIntent == 0) {
-                game.getMonster().MonsterIntent(game.getPlayer(), game.getCombat());
-                monsterIntent = game.getMonster().getMonsterAttack();
-            }
+            if (game.getMonster().GetHealth() != 0) {
+                if (monsterIntent == 0) {
+                    game.getMonster().MonsterIntent(game.getPlayer(), game.getCombat());
+                    monsterIntent = game.getMonster().getMonsterAttack();
+                }
 
-            int x = e.getX();
-            int y = e.getY();
-            Random rand = new Random();
+                int x = e.getX();
+                int y = e.getY();
+                Random rand = new Random();
 
-            //Cycle through all valid card coordinates
-            for (int i=0;i<cardZones.size()-3;i+=4) //TODO: Array List out of bounds
-            {
-                if (((x >= cardZones.get(i)) && (x <= (cardZones.get(i) + cardZones.get(i+2)))) && ((y >= cardZones.get(i+1)) && (y <= (cardZones.get(i+1) + cardZones.get(i+3)))))
+                //Cycle through all valid card coordinates
+                for (int i = 0; i < cardZones.size() - 3; i += 4) //TODO: Array List out of bounds
                 {
-                    //TODO: Activate card effect
-                    System.out.println(cardZones.size() + " cardzone");
-                    game.getCombat().getHand().get(i / 4).CardAction(game.getPlayer(),game.getMonster(),game.getCombat()); //Card action
-                    if (game.getCombat().getHand().get(i / 4).getCardType() == 1 || game.getCombat().getHand().get(i / 4).getCardType() == 3)
-                        selfDrawCount++;
+                    if (((x >= cardZones.get(i)) && (x <= (cardZones.get(i) + cardZones.get(i + 2)))) && ((y >= cardZones.get(i + 1)) && (y <= (cardZones.get(i + 1) + cardZones.get(i + 3))))) {
+                        //TODO: Activate card effect
+                        System.out.println(cardZones.size() + " cardzone");
+                        game.getCombat().getHand().get(i / 4).CardAction(game.getPlayer(), game.getMonster(), game.getCombat()); //Card action
+                        if (game.getCombat().getHand().get(i / 4).getCardType() == 1 || game.getCombat().getHand().get(i / 4).getCardType() == 3)
+                            selfDrawCount++;
 
                         new java.util.Timer().schedule(
                                 new java.util.TimerTask() {
@@ -80,23 +80,83 @@ public class Goo extends JFrame
                                 },
                                 325
                         );
-                    //}
+                        //}
 
-                    ///
+                        ///
 
-                    game.getCombat().getDiscard().add(game.getCombat().getHand().get(i / 4)); //Add to discard pile
-                    game.getCombat().getHand().remove(i / 4); //Remove from hand
+                        game.getCombat().getDiscard().add(game.getCombat().getHand().get(i / 4)); //Add to discard pile
+                        game.getCombat().getHand().remove(i / 4); //Remove from hand
 
-                    System.out.println("Valid card clicked");
+                        System.out.println("Valid card clicked");
 
-                    cardZones.clear();
-                    board.repaint();
+                        cardZones.clear();
+                        board.repaint();
 
-                    int drawCount = selfDrawCount;
+                        int drawCount = selfDrawCount;
+                        int draw;
+
+                        if (game.getCombat().getHand().size() < 5 && drawCount > 0) {
+                            if (game.getCombat().getDeckDraw().size() == 0) {
+                                while (game.getCombat().getDiscard().size() > 0) {
+                                    ///
+                                    System.out.println("------Reset Hand");
+                                    ///
+                                    int temp;
+
+                                    if (game.getCombat().getDiscard().size() > 1)
+                                        temp = rand.nextInt(game.getCombat().getDiscard().size() - 1);
+                                    else
+                                        temp = 0;
+                                    game.getCombat().getDeckDraw().add(game.getCombat().getDiscard().get(temp));
+                                    game.getCombat().getDiscard().remove(temp);
+                                    // }
+                                }
+                            }
+
+                            if (drawCount > game.getDeck().size()) {
+                                drawCount = game.getDeck().size();
+                            }
+
+                            for (int j = 0; j < drawCount; j++) {
+                                if (game.getCombat().getDeckDraw().size() == 1)
+                                    draw = 0;
+                                else
+                                    draw = rand.nextInt(game.getCombat().getDeckDraw().size() - 1);
+
+                                game.getCombat().getHand().add(game.getCombat().getDeckDraw().get(draw));
+                                game.getCombat().getDeckDraw().remove(draw);
+                                System.out.println("---Draw 1");
+                                if (game.getCombat().getHand().size() == 5)
+                                    break;
+                            }
+                        }
+                        selfDrawCount = 0;
+                        break;
+                    }
+                }
+
+                if (((x >= 870) && (x <= (870 + 161))) && ((y >= 550) && (y <= (550 + 107)))) {
+                    boolean turnActive;
                     int draw;
+
+                    //TODO -----------------------------------------------------------------FEFJHA
+                    game.getMonster().MonsterAttack(game.getPlayer(), game.getCombat());
+                    new java.util.Timer().schedule(
+                            new java.util.TimerTask() {
+                                @Override
+                                public void run() {
+                                    game.getCombat().setGooAttacked(false);
+                                    board.repaint();
+                                }
+                            },
+                            325
+                    );
+
+                    int drawCount = 2;
 
                     if (game.getCombat().getHand().size() < 5 && drawCount > 0) {
                         if (game.getCombat().getDeckDraw().size() == 0) {
+                            //if (game.getCombat().getHand().size() == 0 && game.getCombat().getDeckDraw().size() == 0) {
                             while (game.getCombat().getDiscard().size() > 0) {
                                 ///
                                 System.out.println("------Reset Hand");
@@ -113,6 +173,7 @@ public class Goo extends JFrame
                             }
                         }
 
+                        //System.out.println(game.getCombat().getDeckDraw().size());
                         if (drawCount > game.getDeck().size()) {
                             drawCount = game.getDeck().size();
                         }
@@ -129,86 +190,47 @@ public class Goo extends JFrame
                             if (game.getCombat().getHand().size() == 5)
                                 break;
                         }
+
+                        turnActive = true;
                     }
+
+                    game.getMonster().MonsterIntent(game.getPlayer(), game.getCombat());
+                    monsterIntent = game.getMonster().getMonsterAttack();
+
+                    game.getMonster().setDrawCount(0);
                     selfDrawCount = 0;
-                    break;
-                }
-            }
+                    board.repaint();
+                    cardZones.clear();
 
-            if (((x >= 870) && (x <= (870 + 161))) && ((y >= 550) && (y <= (550 + 107))))
-            {
-                boolean turnActive;
-                int draw;
-
-                game.getMonster().MonsterAttack(game.getPlayer(), game.getCombat());
-
-                int drawCount = 2;
-
-                if (game.getCombat().getHand().size() < 5 && drawCount > 0) {
-                    if (game.getCombat().getDeckDraw().size() == 0) {
-                        //if (game.getCombat().getHand().size() == 0 && game.getCombat().getDeckDraw().size() == 0) {
-                            while (game.getCombat().getDiscard().size() > 0) {
-                                ///
-                                System.out.println("------Reset Hand");
-                                ///
-                                int temp;
-
-                                if (game.getCombat().getDiscard().size() > 1)
-                                    temp = rand.nextInt(game.getCombat().getDiscard().size() - 1);
-                                else
-                                    temp = 0;
-                                game.getCombat().getDeckDraw().add(game.getCombat().getDiscard().get(temp));
-                                game.getCombat().getDiscard().remove(temp);
-                           // }
-                        }
-                    }
-
-                    //System.out.println(game.getCombat().getDeckDraw().size());
-                    if (drawCount > game.getDeck().size()) {
-                        drawCount = game.getDeck().size();
-                    }
-
-                    for (int j = 0; j < drawCount; j++) {
-                        if (game.getCombat().getDeckDraw().size() == 1)
-                            draw = 0;
-                        else
-                            draw = rand.nextInt(game.getCombat().getDeckDraw().size() - 1);
-
-                        game.getCombat().getHand().add(game.getCombat().getDeckDraw().get(draw));
-                        game.getCombat().getDeckDraw().remove(draw);
-                        System.out.println("---Draw 1");
-                        if (game.getCombat().getHand().size() == 5)
-                            break;
-                    }
-
-                    turnActive = true;
                 }
 
-                game.getMonster().MonsterIntent(game.getPlayer(), game.getCombat());
-                monsterIntent = game.getMonster().getMonsterAttack();
+                if (game.getMonster().GetHealth() < 1) {
+                    game.getMonster().incrementLevel();
+                    new java.util.Timer().schedule(
+                            new java.util.TimerTask() {
+                                @Override
+                                public void run() {
+                                    game.getMonster().setHealth(game.getMonster().GetHealthMax());
+                                    System.out.println("I did it");
+                                    board.repaint();
+                                }
+                            },
+                            3000
+                    );
+                }
 
-                game.getMonster().setDrawCount(0);
-                selfDrawCount = 0;
-                board.repaint();
-                cardZones.clear();
-
+                if (game.getPlayer().GetHealth() == 0) {
+                    new java.util.Timer().schedule(
+                            new java.util.TimerTask() {
+                                @Override
+                                public void run() {
+                                    System.exit(0);
+                                }
+                            },
+                            5000
+                    );
+                }
             }
-
-            if (game.getMonster().GetHealth() < 1) {
-                game.getMonster().incrementLevel();
-                new java.util.Timer().schedule(
-                        new java.util.TimerTask() {
-                            @Override
-                            public void run() {
-                                game.getMonster().setHealth(game.getMonster().GetHealthMax());
-                                System.out.println("I did it");
-                                board.repaint();
-                            }
-                        },
-                        3000
-                );
-            }
-
         }
 
         public static void receiveCardAreas(int x, int y, int w, int h, GooGame _game)

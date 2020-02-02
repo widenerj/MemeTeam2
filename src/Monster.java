@@ -88,6 +88,8 @@ public class Monster {
             System.out.println("" + name + " attacked for " + monsterAttack + " damage!");
         }
 
+        _fight.setGooAttacked(true);
+
         power = INIT_POWER;
     }
 }

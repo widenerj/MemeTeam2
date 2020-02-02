@@ -49,6 +49,15 @@ public class Combat
         return displayWeaken;
     }
 
+
+    private boolean displayGooAttacked = false;
+    public void setGooAttacked(boolean _displayGooAttacked) {
+        displayGooAttacked = _displayGooAttacked;
+    }
+    public boolean getDisplayGooAttacked() {
+        return displayGooAttacked;
+    }
+
     ///
 
     public ArrayList<Card> getHand()

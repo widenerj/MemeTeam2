@@ -18,6 +18,7 @@ public class Board extends JPanel
     private Image Goo1;
     private Image Heal1;
     private Image GooProjectile;
+    private Image gooAttacked;
     private GooGame game = new GooGame(this);
     private ArrayList<Card> hand;
 
@@ -62,6 +63,8 @@ public class Board extends JPanel
         Heal1 = x.getImage();
         ImageIcon xi = new ImageIcon("src/gameImages/GooProjectile.png");
         GooProjectile = xi.getImage();
+        ImageIcon xii = new ImageIcon("src/gameImages/gooAttacked.png");
+        gooAttacked = xii.getImage();
 
         ImageIcon sci1 = new ImageIcon("src/gameImages/scientist2.png");
         Sci1 = sci1.getImage();
@@ -71,6 +74,10 @@ public class Board extends JPanel
         Sci3 = sci3.getImage();
         ImageIcon sci4 = new ImageIcon("src/gameImages/scientist5.png");
         Sci4 = sci4.getImage();
+
+
+
+
 
     }
 
@@ -89,7 +96,12 @@ public class Board extends JPanel
         g.drawImage(lab,0,-100,null);
         if (game.getPlayer().GetHealth() != 0)
         {
-            g.drawImage(goo,200,270,null);
+            if (!game.getCombat().getDisplayGooAttacked()) {
+                g.drawImage(goo, 200, 270, null);
+            }
+            else {
+                g.drawImage(gooAttacked, 200, 270, null);
+            }
         }
         else
         {
