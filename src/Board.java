@@ -66,8 +66,18 @@ public class Board extends JPanel
     public void drawBackground(Graphics g)
     {
         //Static background objects
+        Graphics2D g2d = (Graphics2D) g;
         g.drawImage(lab,0,-100,null);
-        g.drawImage(goo,200,270,null);
+        if (game.getPlayer().GetHealth() != 0)
+        {
+            g.drawImage(goo,200,270,null);
+        }
+        else
+        {
+            g.setFont(new Font("default",Font.BOLD,100));
+            g2d.drawString("GAME OVER",200,200);
+        }
+
         if (game.getMonster().GetHealth() != 0)
         {
             g.drawImage(scientist,550,250,null);
@@ -87,7 +97,6 @@ public class Board extends JPanel
         }
 
         //All of this does the green box
-        Graphics2D g2d = (Graphics2D) g;
         Rectangle2D bigCardBox = new Rectangle2D.Double(170,440,700,200);
         g.setColor(Color.green);
         g2d.fill(bigCardBox);
@@ -111,11 +120,14 @@ public class Board extends JPanel
         Graphics2D g2d = (Graphics2D) g;
         g.setFont(new Font("default",Font.BOLD,16));
 
-        g2d.drawString("Goo Health: " + game.getPlayer().GetHealth() + "/" + game.getPlayer().GetHealthMax() ,250,250);
+        if (game.getPlayer().GetHealth() != 0)
+        {
+            g2d.drawString("Goo Health: " + game.getPlayer().GetHealth() + "/" + game.getPlayer().GetHealthMax() ,250,250);
+        }
         if (game.getMonster().GetHealth() != 0)
         {
             g2d.drawString("Scientist Health: " + game.getMonster().GetHealth() + "/" + game.getMonster().GetHealthMax(),600,250);
-            g2d.drawString("Dealing " + game.getMonster().getMonsterAttack() + " damage", 600, 150);
+            g2d.drawString("Dealing " + game.getMonster().getMonsterAttack() + " damage", 600, 230);
         }
 
         g2d.drawString(Integer.toString(game.getCombat().getDeckDraw().size()),92,505);
@@ -127,28 +139,35 @@ public class Board extends JPanel
         //TODO: Fill handCardArray with cards in hand
 
         Graphics2D g2d = (Graphics2D) g;
-        hand = game.getCombat().getHand();
-        for (int i=0;i<hand.size();i++)
+        if (game.getPlayer().GetHealth() != 0)
         {
-            if (hand.get(i) != null) //TODO: null not 0 when its card objects
+            hand = game.getCombat().getHand();
+            for (int i=0;i<hand.size();i++)
             {
-                g.setColor(hand.get(i).getColor());
-                Rectangle2D littleCardBox = new Rectangle2D.Double(190 + (136 * i),460,116,160);
-                g2d.fill(littleCardBox);
-                g2d.draw(littleCardBox);
-                g.setColor(Color.BLACK);
+                if (hand.get(i) != null) //TODO: null not 0 when its card objects
+                {
+                    g.setColor(hand.get(i).getColor());
+                    Rectangle2D littleCardBox = new Rectangle2D.Double(190 + (136 * i),460,116,160);
+                    g2d.fill(littleCardBox);
+                    g2d.draw(littleCardBox);
+                    g.setColor(Color.BLACK);
 
-                g.setFont(new Font("default",Font.BOLD,16));
-                g2d.drawString(hand.get(i).GetName(),200 + (136 * i), 500);
-                g.setFont(new Font("default2",Font.PLAIN,10));
-                g2d.drawString(hand.get(i).getDesc(),200 + (136 * i),550);
+                    g.setFont(new Font("default",Font.BOLD,16));
+                    g2d.drawString(hand.get(i).GetName(),200 + (136 * i), 500);
+                    g.setFont(new Font("default2",Font.PLAIN,10));
+                    g2d.drawString(hand.get(i).getDesc(),200 + (136 * i),550);
 
-                int x = 190 + (136 * i);
-                int y = 460;
-                int w = 116;
-                int h = 160;
-                Goo.CardClick.receiveCardAreas(x,y,w,h,game); //Send valid coordinates
+                    int x = 190 + (136 * i);
+                    int y = 460;
+                    int w = 116;
+                    int h = 160;
+                    Goo.CardClick.receiveCardAreas(x,y,w,h,game); //Send valid coordinates
+                }
             }
+        }
+        else
+        {
+
         }
     }
 }
