@@ -9,9 +9,10 @@ public class Combat
     private Monster monster;
     ArrayList<Card> deck;
     private boolean turnActive = false;
-    private int drawCount = 3;
+    private int drawCount = 0;
     private ArrayList<Card> hand;
     private ArrayList<Card> discard;
+    private int monsterIntent;
 
     public ArrayList<Card> getHand()
     {
@@ -25,6 +26,9 @@ public class Combat
     {
         return deck;
     }
+    public int getMonsterIntent() {
+        return monsterIntent;
+    }
 
 
     public Combat(Player _player, Monster _monster, ArrayList<Card> _deck)
@@ -34,9 +38,9 @@ public class Combat
         deck = _deck;
     }
 
-    public boolean GetDrawCount()
+    public int GetDrawCount()
     {
-        return turnActive;
+        return drawCount;
     }
 
     public void SetDrawCount(int _drawCount)
@@ -73,6 +77,9 @@ public class Combat
         // Paste turn 1 start
         turnCount = 1;
         System.out.println("#################### TURN " + turnCount + " ########################################");
+
+        monsterIntent = monster.getMonsterAttack();
+        System.out.println("-----------" + monsterIntent);
 
         while (turnCount == 100) //
         {
@@ -165,9 +172,13 @@ public class Combat
 
             // if somebody dies, end game
             if (player.GetHealth() < 1 || monster.GetHealth() < 1) {
-                System.out.println("GAME TERMINATED");
-                break;
-            }
+            System.out.println("GAME TERMINATED");
+            break;
         }
+        }
+    }
+
+    public void Win() {
+
     }
 }

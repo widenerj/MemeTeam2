@@ -32,6 +32,18 @@ public class GooGame {
         fight1 = new Combat(player, monster,deck);
         fight1.Start();
     }
+/*
+    public void checkWin() {
+        if (player.GetHealth() < 1) {
+            System.out.println("GAME TERMINATED");
+            fight1.Lose();
+        }
+        if (monster.GetHealth() < 1) {
+
+            fight1.Win();
+        }
+    }
+ */
 
     public Player getPlayer()
     {
