@@ -121,12 +121,7 @@ public class Combat
                 break;
         }
 
-        // Initialize all values
-        // Paste turn 1 start
         turnCount = 1;
-        System.out.println("#################### TURN " + turnCount + " ########################################");
-
         monsterIntent = monster.getMonsterAttack();
-        System.out.println("-----------" + monsterIntent);
     }
 }

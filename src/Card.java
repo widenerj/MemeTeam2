@@ -77,7 +77,7 @@ public class Card {
         switch(cardType) {
             case 0:     // Attack demo
                 _monster.AdditiveChangeHealth(-8);
-                System.out.println("EFFECT 0");
+                //System.out.println("EFFECT 0");
                 _fight.setDisplayAttack(true);
                 break;
             case 1:     // Spell demo
@@ -85,22 +85,22 @@ public class Card {
                 _monster.AdditiveChangeHealth(-20);
                 _fight.setDisplaySpell(true);
                 drawCount += 1;
-                System.out.println("EFFECT 1");
+                //System.out.println("EFFECT 1");
                 break;
             case 2:     // Heal demo
                 _player.AdditiveChangeHealth(8);
-                System.out.println("EFFECT 2");
+                //System.out.println("EFFECT 2");
                 _fight.setDisplayHeal(true);
                 break;
             case 3:     // Weaken demo
                 _monster.SetPower(_monster.GetPower() / 2);
                 _player.AdditiveChangeHealth(-4);
                 drawCount += 1;
-                System.out.println("EFFECT 3");
+                //System.out.println("EFFECT 3");
                 _fight.setDisplayWeaken(true);
                 break;
             default:
-                System.out.println("ERROR, INVALID CARD OBJECT");
+                //System.out.println("ERROR, INVALID CARD OBJECT");
                 break;
         }
         state = 2;  // discard

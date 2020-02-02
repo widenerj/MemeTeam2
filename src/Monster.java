@@ -45,7 +45,6 @@ public class Monster {
         //health = healthMax;
         INIT_POWER += 2;
         power = INIT_POWER;
-        System.out.println(healthMax + " " + health + " " + power);
     }
 
     public void AdditiveChangeHealth(int effect) {
@@ -77,7 +76,6 @@ public class Monster {
     public void MonsterIntent(Player _player, Combat _fight) {
         Random rand = new Random();
         monsterAttack = power + (rand.nextInt(power) / 2);
-        System.out.println("++++++++++" + power);
     }
 
     public void MonsterAttack(Player _player, Combat _fight) {
@@ -85,7 +83,6 @@ public class Monster {
         {
             _player.AdditiveChangeHealth(-monsterAttack);
             drawCount = 2;
-            System.out.println("" + name + " attacked for " + monsterAttack + " damage!");
         }
 
         _fight.setGooAttacked(true);

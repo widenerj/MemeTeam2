@@ -74,11 +74,6 @@ public class Board extends JPanel
         Sci3 = sci3.getImage();
         ImageIcon sci4 = new ImageIcon("src/gameImages/scientist5.png");
         Sci4 = sci4.getImage();
-
-
-
-
-
     }
 
     @Override
@@ -164,13 +159,10 @@ public class Board extends JPanel
             g2d.fill(littleCardBox);
             g2d.draw(littleCardBox);
         }
-
-        //End turn
     }
 
     public void drawNumbers(Graphics g)
     {
-        //TODO: Make values dynamic
         Graphics2D g2d = (Graphics2D) g;
         g.setFont(new Font("default",Font.BOLD,16));
 

@@ -58,11 +58,9 @@ public class Goo extends JFrame
                 Random rand = new Random();
 
                 //Cycle through all valid card coordinates
-                for (int i = 0; i < cardZones.size() - 3; i += 4) //TODO: Array List out of bounds
+                for (int i = 0; i < cardZones.size() - 3; i += 4)
                 {
                     if (((x >= cardZones.get(i)) && (x <= (cardZones.get(i) + cardZones.get(i + 2)))) && ((y >= cardZones.get(i + 1)) && (y <= (cardZones.get(i + 1) + cardZones.get(i + 3))))) {
-                        //TODO: Activate card effect
-                        System.out.println(cardZones.size() + " cardzone");
                         game.getCombat().getHand().get(i / 4).CardAction(game.getPlayer(), game.getMonster(), game.getCombat()); //Card action
                         if (game.getCombat().getHand().get(i / 4).getCardType() == 1 || game.getCombat().getHand().get(i / 4).getCardType() == 3)
                             selfDrawCount++;
@@ -80,14 +78,9 @@ public class Goo extends JFrame
                                 },
                                 325
                         );
-                        //}
-
-                        ///
 
                         game.getCombat().getDiscard().add(game.getCombat().getHand().get(i / 4)); //Add to discard pile
                         game.getCombat().getHand().remove(i / 4); //Remove from hand
-
-                        System.out.println("Valid card clicked");
 
                         cardZones.clear();
                         board.repaint();
@@ -98,9 +91,6 @@ public class Goo extends JFrame
                         if (game.getCombat().getHand().size() < 5 && drawCount > 0) {
                             if (game.getCombat().getDeckDraw().size() == 0) {
                                 while (game.getCombat().getDiscard().size() > 0) {
-                                    ///
-                                    System.out.println("------Reset Hand");
-                                    ///
                                     int temp;
 
                                     if (game.getCombat().getDiscard().size() > 1)
@@ -109,7 +99,6 @@ public class Goo extends JFrame
                                         temp = 0;
                                     game.getCombat().getDeckDraw().add(game.getCombat().getDiscard().get(temp));
                                     game.getCombat().getDiscard().remove(temp);
-                                    // }
                                 }
                             }
 
@@ -125,7 +114,6 @@ public class Goo extends JFrame
 
                                 game.getCombat().getHand().add(game.getCombat().getDeckDraw().get(draw));
                                 game.getCombat().getDeckDraw().remove(draw);
-                                System.out.println("---Draw 1");
                                 if (game.getCombat().getHand().size() == 5)
                                     break;
                             }
@@ -139,7 +127,6 @@ public class Goo extends JFrame
                     boolean turnActive;
                     int draw;
 
-                    //TODO -----------------------------------------------------------------FEFJHA
                     game.getMonster().MonsterAttack(game.getPlayer(), game.getCombat());
                     new java.util.Timer().schedule(
                             new java.util.TimerTask() {
@@ -158,9 +145,6 @@ public class Goo extends JFrame
                         if (game.getCombat().getDeckDraw().size() == 0) {
                             //if (game.getCombat().getHand().size() == 0 && game.getCombat().getDeckDraw().size() == 0) {
                             while (game.getCombat().getDiscard().size() > 0) {
-                                ///
-                                System.out.println("------Reset Hand");
-                                ///
                                 int temp;
 
                                 if (game.getCombat().getDiscard().size() > 1)
@@ -186,7 +170,6 @@ public class Goo extends JFrame
 
                             game.getCombat().getHand().add(game.getCombat().getDeckDraw().get(draw));
                             game.getCombat().getDeckDraw().remove(draw);
-                            System.out.println("---Draw 1");
                             if (game.getCombat().getHand().size() == 5)
                                 break;
                         }
@@ -211,7 +194,6 @@ public class Goo extends JFrame
                                 @Override
                                 public void run() {
                                     game.getMonster().setHealth(game.getMonster().GetHealthMax());
-                                    System.out.println("I did it");
                                     board.repaint();
                                 }
                             },

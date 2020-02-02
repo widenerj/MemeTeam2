@@ -10,8 +10,6 @@ public class GooGame {
 
     public GooGame(Board _board) {
 
-        System.out.println("Beginning of game");
-
         player = new Player(100);
 
         monster = new Monster("Monster", 90, 6);
