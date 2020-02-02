@@ -23,6 +23,16 @@ public class Card {
         return name;
     }
 
+    public Color getColor()
+    {
+        return color;
+    }
+
+    public String getDesc()
+    {
+        return desc;
+    }
+
     public int getDrawCount() {
         return drawCount;
     }
@@ -40,19 +50,23 @@ public class Card {
         switch (cardType) {
             case 0:
                 name = "Attack";
-                desc = "Hits the enemy for 8 damage";
+                desc = "8 dmg";
+                color = Color.red;
                 break;
             case 1:
                 name = "Spell";
-                desc = "Hits the enemy for 20 damage, take 10 self damage";
+                desc = "20 dmg, -10 hp, draw";
+                color = Color.YELLOW;
                 break;
             case 2:
                 name = "Heal";
-                desc = "Heal self for 6 damage";
+                desc = "Heal 6";
+                color = Color.PINK;
                 break;
             case 3:
                 name = "Weaken";
-                desc = "Deal 4 self damage, to make enemy do 1/2 damage";
+                desc = "-4 hp, 1/2 enemy dmg";
+                color = Color.gray;
                 break;
         }
     }

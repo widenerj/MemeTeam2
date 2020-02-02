@@ -14,6 +14,7 @@ public class Board extends JPanel
     private Image drawPile;
     private Image discardPile;
     private Image endTurn;
+    private Image BloodAttack2;
     private GooGame game = new GooGame();
     private ArrayList<Card> hand;
 
@@ -43,6 +44,8 @@ public class Board extends JPanel
         discardPile = v.getImage();
         ImageIcon vi = new ImageIcon("src/gameImages/endme.png");
         endTurn = vi.getImage();
+        ImageIcon vii = new ImageIcon("src/gameImages/BloodAttack2.png");
+        BloodAttack2 = vii.getImage();
     }
 
     @Override
@@ -58,7 +61,14 @@ public class Board extends JPanel
         //Static background objects
         g.drawImage(lab,0,-100,null);
         g.drawImage(goo,200,270,null);
-        g.drawImage(scientist,550,250,null);
+        if (game.getMonster().GetHealth() != 0)
+        {
+            g.drawImage(scientist,550,250,null);
+        }
+        else
+        {
+            g.drawImage(BloodAttack2,550,250,null);
+        }
         g.drawImage(drawPile,50,450,null);
         g.drawImage(discardPile,900,450,null);
         g.drawImage(endTurn,870,550,null);
@@ -106,7 +116,7 @@ public class Board extends JPanel
         {
             if (hand.get(i) != null) //TODO: null not 0 when its card objects
             {
-                g.setColor(Color.white);
+                g.setColor(hand.get(i).getColor());
                 Rectangle2D littleCardBox = new Rectangle2D.Double(190 + (136 * i),460,116,160);
                 g2d.fill(littleCardBox);
                 g2d.draw(littleCardBox);
@@ -114,6 +124,8 @@ public class Board extends JPanel
 
                 g.setFont(new Font("default",Font.BOLD,16));
                 g2d.drawString(hand.get(i).GetName(),200 + (136 * i), 500);
+                g.setFont(new Font("default2",Font.PLAIN,10));
+                g2d.drawString(hand.get(i).getDesc(),200 + (136 * i),550);
 
                 int x = 190 + (136 * i);
                 int y = 460;
