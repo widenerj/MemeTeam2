@@ -193,6 +193,22 @@ public class Goo extends JFrame
                 cardZones.clear();
 
             }
+
+            if (game.getMonster().GetHealth() < 1) {
+                game.getMonster().incrementLevel();
+                new java.util.Timer().schedule(
+                        new java.util.TimerTask() {
+                            @Override
+                            public void run() {
+                                game.getMonster().setHealth(game.getMonster().GetHealthMax());
+                                System.out.println("I did it");
+                                board.repaint();
+                            }
+                        },
+                        3000
+                );
+            }
+
         }
 
         public static void receiveCardAreas(int x, int y, int w, int h, GooGame _game)

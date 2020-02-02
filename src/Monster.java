@@ -9,6 +9,8 @@ public class Monster {
     private int drawCount;
     private int monsterAttack;
 
+    private int level = 0;
+
     public Monster(String _name, int _healthMax, int _power) {
         name = _name;
         health = _healthMax;
@@ -33,6 +35,19 @@ public class Monster {
         power = _powerChange;
     }
 
+    public int GetLevel() {
+        return level;
+    }
+
+    public void incrementLevel() {
+        level++;
+        healthMax += level * 25;
+        //health = healthMax;
+        INIT_POWER += 2;
+        power = INIT_POWER;
+        System.out.println(healthMax + " " + health + " " + power);
+    }
+
     public void AdditiveChangeHealth(int effect) {
         health += effect;
         if (health > healthMax)
@@ -41,6 +56,10 @@ public class Monster {
         if (health < 0)
             health = 0;
 
+    }
+
+    public void setHealth(int _health) {
+        health = _health;
     }
 
     public int getDrawCount() {
