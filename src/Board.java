@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 public class Board extends JPanel
 {
-    //public static int[] hand = {1,1,1,1,1}; //TODO: Card objects NOT ints
     private Image goo;
     private Image scientist;
     private Image lab;
@@ -136,15 +135,13 @@ public class Board extends JPanel
 
     public void drawCards(Graphics g)
     {
-        //TODO: Fill handCardArray with cards in hand
-
         Graphics2D g2d = (Graphics2D) g;
         if (game.getPlayer().GetHealth() != 0)
         {
             hand = game.getCombat().getHand();
             for (int i=0;i<hand.size();i++)
             {
-                if (hand.get(i) != null) //TODO: null not 0 when its card objects
+                if (hand.get(i) != null)
                 {
                     g.setColor(hand.get(i).getColor());
                     Rectangle2D littleCardBox = new Rectangle2D.Double(190 + (136 * i),460,116,160);
