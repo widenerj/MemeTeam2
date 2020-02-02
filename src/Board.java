@@ -99,8 +99,11 @@ public class Board extends JPanel
         g.setFont(new Font("default",Font.BOLD,16));
 
         g2d.drawString("Goo Health: " + game.getPlayer().GetHealth() + "/" + game.getPlayer().GetHealthMax() ,250,250);
-        g2d.drawString("Scientist Health: " + game.getMonster().GetHealth() + "/" + game.getMonster().GetHealthMax(),600,250);
-        g2d.drawString("Dealing " + game.getMonster().getMonsterAttack() + " damage", 600, 150);
+        if (game.getMonster().GetHealth() != 0)
+        {
+            g2d.drawString("Scientist Health: " + game.getMonster().GetHealth() + "/" + game.getMonster().GetHealthMax(),600,250);
+            g2d.drawString("Dealing " + game.getMonster().getMonsterAttack() + " damage", 600, 150);
+        }
 
         g2d.drawString(Integer.toString(game.getCombat().getDeckDraw().size()),92,505);
         g2d.drawString(Integer.toString(game.getCombat().getDiscard().size()),942,505);
