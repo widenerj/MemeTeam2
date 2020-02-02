@@ -83,6 +83,7 @@ public class Card {
             case 1:     // Spell demo
                 _player.AdditiveChangeHealth(-10);
                 _monster.AdditiveChangeHealth(-20);
+                _fight.setDisplaySpell(true);
                 drawCount += 1;
                 System.out.println("EFFECT 1");
                 break;

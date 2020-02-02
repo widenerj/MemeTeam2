@@ -15,15 +15,25 @@ public class Combat
     private int monsterIntent;
     Board board;
 
-    private boolean displayAttack = false;
+    ///
 
+    private boolean displayAttack = false;
     public void setDisplayAttack(boolean _displayAttack) {
         displayAttack = _displayAttack;
     }
-
     public boolean getDisplayAttack() {
         return displayAttack;
     }
+
+    private boolean displaySpell = false;
+    public void setDisplaySpell(boolean _displaySpell) {
+        displaySpell = _displaySpell;
+    }
+    public boolean getDisplaySpell() {
+        return displaySpell;
+    }
+
+    ///
 
     public ArrayList<Card> getHand()
     {

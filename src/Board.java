@@ -16,6 +16,7 @@ public class Board extends JPanel
     private Image endTurn;
     private Image BloodAttack2;
     private Image BloodAttack;
+    private Image Goo1;
     private GooGame game = new GooGame(this);
     private ArrayList<Card> hand;
 
@@ -49,6 +50,9 @@ public class Board extends JPanel
         BloodAttack2 = vii.getImage();
         ImageIcon viii = new ImageIcon("src/gameImages/BloodAttack.png");
         BloodAttack = viii.getImage();
+        ImageIcon ix = new ImageIcon("src/gameImages/Goo1.png");
+        Goo1 = ix.getImage();
+
     }
 
     @Override
@@ -77,6 +81,9 @@ public class Board extends JPanel
         g.drawImage(endTurn,870,550,null);
         if (game.getCombat().getDisplayAttack()) {
             g.drawImage(BloodAttack2, 550, 250, null);
+        }
+        if (game.getCombat().getDisplaySpell()) {
+            g.drawImage(Goo1, 635, 300, null);
         }
 
         //All of this does the green box
