@@ -77,12 +77,11 @@ public class Card {
         switch(cardType) {
             case 0:     // Attack demo
                 _monster.AdditiveChangeHealth(-8);
-                _player.AdditiveChangeHealth(1);
                 //System.out.println("EFFECT 0");
                 _fight.setDisplayAttack(true);
                 break;
             case 1:     // Spell demo
-                _player.AdditiveChangeHealth(10);
+                _player.AdditiveChangeHealth(-10);
                 _monster.AdditiveChangeHealth(-20);
                 _fight.setDisplaySpell(true);
                 drawCount += 1;
