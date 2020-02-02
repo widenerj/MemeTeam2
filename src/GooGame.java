@@ -8,8 +8,6 @@ public class GooGame {
     private ArrayList<Card> deck;
     private Combat fight1;
 
-    // TODO CARD DRAW ON DAMAGE, IMPLEMENT BOTH CODES
-
     public GooGame(Board _board) {
 
         System.out.println("Beginning of game");
