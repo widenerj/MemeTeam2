@@ -35,8 +35,6 @@ public class Goo extends JFrame
         });
     }
 
-
-
     public static class CardClick extends MouseAdapter
     {
         //ArrayList for valid card coordinates
@@ -69,9 +67,6 @@ public class Goo extends JFrame
                     if (game.getCombat().getHand().get(i / 4).getCardType() == 1 || game.getCombat().getHand().get(i / 4).getCardType() == 3)
                         selfDrawCount++;
 
-                    ///
-
-                    //if (game.getCombat().getHand().get(i / 4).getCardType() == 0) {
                         new java.util.Timer().schedule(
                                 new java.util.TimerTask() {
                                     @Override
@@ -92,15 +87,11 @@ public class Goo extends JFrame
                     game.getCombat().getDiscard().add(game.getCombat().getHand().get(i / 4)); //Add to discard pile
                     game.getCombat().getHand().remove(i / 4); //Remove from hand
 
-
-
                     System.out.println("Valid card clicked");
 
                     cardZones.clear();
                     board.repaint();
-                    //TODO: Remove card from hand list, clear coordinates, and sort hand
 
-                    ///
                     int drawCount = selfDrawCount;
                     int draw;
 
@@ -139,16 +130,10 @@ public class Goo extends JFrame
                                 break;
                         }
                     }
-                    ///
-
                     selfDrawCount = 0;
-
-                    //game.checkWin();
                     break;
                 }
             }
-
-
 
             if (((x >= 870) && (x <= (870 + 161))) && ((y >= 550) && (y <= (550 + 107))))
             {
