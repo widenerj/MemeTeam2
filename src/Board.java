@@ -21,6 +21,11 @@ public class Board extends JPanel
     private GooGame game = new GooGame(this);
     private ArrayList<Card> hand;
 
+    private Image Sci1;
+    private Image Sci2;
+    private Image Sci3;
+    private Image Sci4;
+
     public Board()
     {
         initBoard();
@@ -58,6 +63,15 @@ public class Board extends JPanel
         ImageIcon xi = new ImageIcon("src/gameImages/GooProjectile.png");
         GooProjectile = xi.getImage();
 
+        ImageIcon sci1 = new ImageIcon("src/gameImages/scientist2.png");
+        Sci1 = sci1.getImage();
+        ImageIcon sci2 = new ImageIcon("src/gameImages/scientist3.png");
+        Sci2 = sci2.getImage();
+        ImageIcon sci3 = new ImageIcon("src/gameImages/scientist4.png");
+        Sci3 = sci3.getImage();
+        ImageIcon sci4 = new ImageIcon("src/gameImages/scientist5.png");
+        Sci4 = sci4.getImage();
+
     }
 
     @Override
@@ -85,7 +99,24 @@ public class Board extends JPanel
 
         if (game.getMonster().GetHealth() != 0)
         {
-            g.drawImage(scientist,550,250,null);
+            switch (game.getMonster().GetLevel()) {
+                case 0:
+                    g.drawImage(scientist, 550, 250, null);
+                    break;
+                case 1:
+                    g.drawImage(Sci1, 550, 250, null);
+                    break;
+                case 2:
+                    g.drawImage(Sci2, 550, 250, null);
+                    break;
+                case 3:
+                    g.drawImage(Sci3, 550, 250, null);
+                    break;
+                case 4:
+                    g.drawImage(Sci4, 550, 250, null);
+                    break;
+                default:
+            }
         }
         else
         {
