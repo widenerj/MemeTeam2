@@ -15,6 +15,7 @@ public class Board extends JPanel
     private Image discardPile;
     private Image endTurn;
     private Image BloodAttack2;
+    private Image BloodAttack;
     private GooGame game = new GooGame(this);
     private ArrayList<Card> hand;
 
@@ -46,6 +47,8 @@ public class Board extends JPanel
         endTurn = vi.getImage();
         ImageIcon vii = new ImageIcon("src/gameImages/BloodAttack2.png");
         BloodAttack2 = vii.getImage();
+        ImageIcon viii = new ImageIcon("src/gameImages/BloodAttack.png");
+        BloodAttack = viii.getImage();
     }
 
     @Override
@@ -67,7 +70,7 @@ public class Board extends JPanel
         }
         else
         {
-            g.drawImage(BloodAttack2,550,250,null);
+            g.drawImage(BloodAttack,550,250,null);
         }
         g.drawImage(drawPile,50,450,null);
         g.drawImage(discardPile,900,450,null);
