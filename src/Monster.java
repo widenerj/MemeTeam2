@@ -1,3 +1,5 @@
+import org.omg.PortableServer._ServantActivatorStub;
+
 import java.util.Random;
 
 public class Monster {
@@ -72,6 +74,8 @@ public class Monster {
     public int getMonsterAttack() {
         return monsterAttack;
     }
+
+    public void setMonsterAttack(int _monsterAttack) {monsterAttack = _monsterAttack;}
 
     public void MonsterIntent(Player _player, Combat _fight) {
         Random rand = new Random();
