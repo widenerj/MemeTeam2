@@ -61,9 +61,12 @@ public class Monster {
     }
 
     public void MonsterAttack(Player _player, Combat _fight) {
-        _player.AdditiveChangeHealth(-monsterAttack);
-        drawCount = 2;
-        System.out.println("" + name + " attacked for " + monsterAttack + " damage!");
+        if (health != 0)
+        {
+            _player.AdditiveChangeHealth(-monsterAttack);
+            drawCount = 2;
+            System.out.println("" + name + " attacked for " + monsterAttack + " damage!");
+        }
 
         power = INIT_POWER;
     }

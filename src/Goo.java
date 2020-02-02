@@ -134,10 +134,7 @@ public class Goo extends JFrame
                 boolean turnActive;
                 int draw;
 
-                if (game.getMonster().GetHealth() != 0)
-                {
-                    game.getMonster().MonsterAttack(game.getPlayer(), game.getCombat());
-                }
+                game.getMonster().MonsterAttack(game.getPlayer(), game.getCombat());
 
                 int drawCount = 2;
 
