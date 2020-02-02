@@ -178,6 +178,7 @@ public class Board extends JPanel
 
         g2d.drawString(Integer.toString(game.getCombat().getDeckDraw().size()),92,505);
         g2d.drawString(Integer.toString(game.getCombat().getDiscard().size()),942,505);
+        g2d.drawString("Enemies defeated: " + game.getMonster().GetLevel(),50,50);
     }
 
     public void drawCards(Graphics g)
