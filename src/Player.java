@@ -19,6 +19,10 @@ public class Player {
         health += effect;
         if (health > healthMax)
             health = healthMax;
+
+        if (health < 0)
+            health = 0;
+
     }
 
     public void SetHealthMax(int _healthMax) {

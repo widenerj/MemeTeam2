@@ -7,6 +7,8 @@ import java.util.Random;
 
 public class Goo extends JFrame
 {
+    private static int monsterIntent;
+
     private static JPanel board;
 
     public Goo()
@@ -33,6 +35,8 @@ public class Goo extends JFrame
         });
     }
 
+
+
     public static class CardClick extends MouseAdapter
     {
         //ArrayList for valid card coordinates
@@ -40,10 +44,16 @@ public class Goo extends JFrame
         private static ArrayList<Card> hand = new ArrayList<>();
         private static GooGame game;
         private static int selfDrawCount = 0;
+        int monsterIntent = 0;
 
         @Override
         public void mousePressed(MouseEvent e)
         {
+            if (monsterIntent == 0) {
+                game.getMonster().MonsterIntent(game.getPlayer(), game.getCombat());
+                monsterIntent = game.getMonster().getMonsterAttack();
+            }
+
             int x = e.getX();
             int y = e.getY();
             Random rand = new Random();
@@ -111,6 +121,8 @@ public class Goo extends JFrame
                     ///
 
                     selfDrawCount = 0;
+
+                    //game.checkWin();
                     break;
                 }
             }
@@ -124,7 +136,7 @@ public class Goo extends JFrame
 
                 game.getMonster().MonsterAttack(game.getPlayer(), game.getCombat());
 
-                int drawCount = game.getMonster().getDrawCount();
+                int drawCount = 2;
 
                 if (game.getCombat().getHand().size() < 5 && drawCount > 0) {
                     if (game.getCombat().getDeckDraw().size() == 0) {
@@ -166,10 +178,14 @@ public class Goo extends JFrame
                     turnActive = true;
                 }
 
+                game.getMonster().MonsterIntent(game.getPlayer(), game.getCombat());
+                monsterIntent = game.getMonster().getMonsterAttack();
+
                 game.getMonster().setDrawCount(0);
                 selfDrawCount = 0;
                 board.repaint();
                 cardZones.clear();
+
             }
         }
 
