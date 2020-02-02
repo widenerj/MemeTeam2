@@ -13,6 +13,17 @@ public class Combat
     private ArrayList<Card> hand;
     private ArrayList<Card> discard;
     private int monsterIntent;
+    Board board;
+
+    private boolean displayAttack = false;
+
+    public void setDisplayAttack(boolean _displayAttack) {
+        displayAttack = _displayAttack;
+    }
+
+    public boolean getDisplayAttack() {
+        return displayAttack;
+    }
 
     public ArrayList<Card> getHand()
     {
@@ -31,7 +42,7 @@ public class Combat
     }
 
 
-    public Combat(Player _player, Monster _monster, ArrayList<Card> _deck)
+    public Combat(Player _player, Monster _monster, ArrayList<Card> _deck, Board _board)
     {
         player = _player;
         monster = _monster;

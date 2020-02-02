@@ -68,6 +68,20 @@ public class Goo extends JFrame
                     game.getCombat().getHand().get(i / 4).CardAction(game.getPlayer(),game.getMonster(),game.getCombat()); //Card action
                     if (game.getCombat().getHand().get(i / 4).getCardType() == 1 || game.getCombat().getHand().get(i / 4).getCardType() == 3)
                         selfDrawCount++;
+
+                    if (game.getCombat().getHand().get(i / 4).getCardType() == 0) {
+                        new java.util.Timer().schedule(
+                                new java.util.TimerTask() {
+                                    @Override
+                                    public void run() {
+                                        game.getCombat().setDisplayAttack(false);
+                                        board.repaint();
+                                    }
+                                },
+                                250
+                        );
+                    }
+
                     game.getCombat().getDiscard().add(game.getCombat().getHand().get(i / 4)); //Add to discard pile
                     game.getCombat().getHand().remove(i / 4); //Remove from hand
 

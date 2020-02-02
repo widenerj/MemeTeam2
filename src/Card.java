@@ -10,6 +10,7 @@ public class Card {
     private int state; // 0 = DECK, 1 = HAND, 2 = DISCARD
     private Color color;
     private int drawCount = 0;
+    Board board;
 
 
     public Card() {
@@ -45,8 +46,9 @@ public class Card {
         return cardType;
     }
 
-    public Card (int _cardType) {
+    public Card (int _cardType, Board _board) {
         cardType = _cardType;
+        board = _board;
         switch (cardType) {
             case 0:
                 name = "Attack";
@@ -76,6 +78,7 @@ public class Card {
             case 0:     // Attack demo
                 _monster.AdditiveChangeHealth(-8);
                 System.out.println("EFFECT 0");
+                _fight.setDisplayAttack(true);
                 break;
             case 1:     // Spell demo
                 _player.AdditiveChangeHealth(-10);

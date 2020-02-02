@@ -10,7 +10,7 @@ public class GooGame {
 
     // TODO CARD DRAW ON DAMAGE, IMPLEMENT BOTH CODES
 
-    public GooGame() {
+    public GooGame(Board _board) {
 
         System.out.println("Beginning of game");
 
@@ -19,17 +19,17 @@ public class GooGame {
         monster = new Monster("Monster", 90, 6);
 
         deck = new ArrayList<Card>();
-        deck.add(new Card(0));
-        deck.add(new Card(0));
-        deck.add(new Card(0));
-        deck.add(new Card(0));
-        deck.add(new Card(3));
-        deck.add(new Card(1));
-        deck.add(new Card(1));
-        deck.add(new Card(1));
-        deck.add(new Card(2));
-        deck.add(new Card(2));
-        fight1 = new Combat(player, monster,deck);
+        deck.add(new Card(0, _board));
+        deck.add(new Card(0, _board));
+        deck.add(new Card(0, _board));
+        deck.add(new Card(0, _board));
+        deck.add(new Card(3, _board));
+        deck.add(new Card(1, _board));
+        deck.add(new Card(1, _board));
+        deck.add(new Card(1, _board));
+        deck.add(new Card(2, _board));
+        deck.add(new Card(2, _board));
+        fight1 = new Combat(player, monster, deck, _board);
         fight1.Start();
     }
 /*

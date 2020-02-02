@@ -58,6 +58,7 @@ public class Monster {
     public void MonsterIntent(Player _player, Combat _fight) {
         Random rand = new Random();
         monsterAttack = power + (rand.nextInt(power) / 2);
+        System.out.println("++++++++++" + power);
     }
 
     public void MonsterAttack(Player _player, Combat _fight) {

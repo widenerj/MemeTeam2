@@ -15,7 +15,7 @@ public class Board extends JPanel
     private Image discardPile;
     private Image endTurn;
     private Image BloodAttack2;
-    private GooGame game = new GooGame();
+    private GooGame game = new GooGame(this);
     private ArrayList<Card> hand;
 
     public Board()
@@ -72,6 +72,9 @@ public class Board extends JPanel
         g.drawImage(drawPile,50,450,null);
         g.drawImage(discardPile,900,450,null);
         g.drawImage(endTurn,870,550,null);
+        if (game.getCombat().getDisplayAttack()) {
+            g.drawImage(BloodAttack2, 550, 250, null);
+        }
 
         //All of this does the green box
         Graphics2D g2d = (Graphics2D) g;
