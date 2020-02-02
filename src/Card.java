@@ -90,12 +90,14 @@ public class Card {
             case 2:     // Heal demo
                 _player.AdditiveChangeHealth(8);
                 System.out.println("EFFECT 2");
+                _fight.setDisplayHeal(true);
                 break;
             case 3:     // Weaken demo
                 _monster.SetPower(_monster.GetPower() / 2);
                 _player.AdditiveChangeHealth(-4);
                 drawCount += 1;
                 System.out.println("EFFECT 3");
+                _fight.setDisplayWeaken(true);
                 break;
             default:
                 System.out.println("ERROR, INVALID CARD OBJECT");

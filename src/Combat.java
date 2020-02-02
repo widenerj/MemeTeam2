@@ -33,6 +33,22 @@ public class Combat
         return displaySpell;
     }
 
+    private boolean displayHeal = false;
+    public void setDisplayHeal(boolean _displayHeal) {
+        displayHeal = _displayHeal;
+    }
+    public boolean getDisplayHeal() {
+        return displayHeal;
+    }
+
+    private boolean displayWeaken = false;
+    public void setDisplayWeaken(boolean _displayWeaken) {
+        displayWeaken = _displayWeaken;
+    }
+    public boolean getDisplayWeaken() {
+        return displayWeaken;
+    }
+
     ///
 
     public ArrayList<Card> getHand()

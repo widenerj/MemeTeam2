@@ -71,31 +71,21 @@ public class Goo extends JFrame
 
                     ///
 
-                    if (game.getCombat().getHand().get(i / 4).getCardType() == 0) {
+                    //if (game.getCombat().getHand().get(i / 4).getCardType() == 0) {
                         new java.util.Timer().schedule(
                                 new java.util.TimerTask() {
                                     @Override
                                     public void run() {
                                         game.getCombat().setDisplayAttack(false);
-                                        board.repaint();
-                                    }
-                                },
-                                250
-                        );
-                    }
-
-                    if (game.getCombat().getHand().get(i / 4).getCardType() == 1) {
-                        new java.util.Timer().schedule(
-                                new java.util.TimerTask() {
-                                    @Override
-                                    public void run() {
                                         game.getCombat().setDisplaySpell(false);
+                                        game.getCombat().setDisplayHeal(false);
+                                        game.getCombat().setDisplayWeaken(false);
                                         board.repaint();
                                     }
                                 },
-                                250
+                                325
                         );
-                    }
+                    //}
 
                     ///
 

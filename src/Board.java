@@ -16,6 +16,8 @@ public class Board extends JPanel
     private Image BloodAttack2;
     private Image BloodAttack;
     private Image Goo1;
+    private Image Heal1;
+    private Image GooProjectile;
     private GooGame game = new GooGame(this);
     private ArrayList<Card> hand;
 
@@ -51,6 +53,10 @@ public class Board extends JPanel
         BloodAttack = viii.getImage();
         ImageIcon ix = new ImageIcon("src/gameImages/Goo1.png");
         Goo1 = ix.getImage();
+        ImageIcon x = new ImageIcon("src/gameImages/Heal1.png");
+        Heal1 = x.getImage();
+        ImageIcon xi = new ImageIcon("src/gameImages/GooProjectile.png");
+        GooProjectile = xi.getImage();
 
     }
 
@@ -92,8 +98,14 @@ public class Board extends JPanel
             g.drawImage(BloodAttack2, 550, 250, null);
         }
         if (game.getCombat().getDisplaySpell()) {
-            g.drawImage(Goo1, 635, 300, null);
+            g.drawImage(GooProjectile, 490, 250, null);
         }
+        if (game.getCombat().getDisplayHeal()) {
+            g.drawImage(Heal1, 200, 270, null);
+        }
+        if (game.getCombat().getDisplayWeaken()) {
+            g.drawImage(Goo1, 635, 300, null);
+    }
 
         //All of this does the green box
         Rectangle2D bigCardBox = new Rectangle2D.Double(170,440,700,200);
